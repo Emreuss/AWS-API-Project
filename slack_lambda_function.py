@@ -14,7 +14,7 @@ def send_slack_message(payload, webhook):
 
     return requests.post(webhook, json.dumps(payload))
 
-webhook = "https://hooks.slack.com/services/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"
+webhook = "https://hooks.slack.com/services/zzzzzzzzzzzzzzzzz"
 payload = {"text": "Anomaly detected!"}
 
 send_slack_message(payload, webhook)
