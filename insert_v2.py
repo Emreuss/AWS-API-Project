@@ -6,7 +6,8 @@ import time
 import json
 
 
-#URL = "https://dt2lr5gew5.execute-api.eu-central-1.amazonaws.com/O/orders"
+#URL = "https://xxxxxxxxxxxxxxx.amazonaws.com/O/orders"
+#URL2 = "https://xxxxxxxxxxxxxxx.amazonaws.com/O/orders"
 
 headers={
     'Content-type':'application/json', 
@@ -50,16 +51,23 @@ now = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 #while True:
 for i in range(1):
     order={}
-    anket={}
+    survey={}
     n = rd.randint(1,10)
     time.sleep(rd.randint(1,15))
     CID_Name = rd.choice(CustomerID_Name)
-    order["CustomerID"]=CID_Name[0]
+    order["CustomerID"]= CID_Name[0]
     order["CustomerName"] = CID_Name[1]
     order["email"] = CID_Name[1].lower().replace(' ','.') + "@gmail.com"
     order["Address"] = fake.address().replace('\n',' ')
     order["PhoneNumber"] = fake.phone_number()[0:10]
     order["InvoiceDate"] = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    survey["IsOkayProductDescription"] = rd.randint(1,5)
+    survey["IsOkayUserInterface"] = rd.randint(1,5)
+    survey["GeneralEvaluation"] = rd.randint(1,5)
+    survey["WillKeepOrdering"] = rd.randint(1,5)
+    #response2 = requests.post(URL2, json = survey, headers=headers)
+    print(survey)
+    #print(response)
     for a in range(n):
         Stock_Desc_Unit = rd.choice(Stock_Desc_Unit_lst)
         order["StockCode"] = Stock_Desc_Unit[0]
