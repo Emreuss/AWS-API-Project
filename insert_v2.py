@@ -67,7 +67,7 @@ for i in range(1):
     survey["WillKeepOrdering"] = rd.randint(1,5)
     #response2 = requests.post(URL2, json = survey, headers=headers)
     print(survey)
-    #print(response)
+    #print(response2)
     for a in range(n):
         Stock_Desc_Unit = rd.choice(Stock_Desc_Unit_lst)
         order["StockCode"] = Stock_Desc_Unit[0]
