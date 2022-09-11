@@ -57,7 +57,7 @@ for i in range(1):
     CID_Name = rd.choice(CustomerID_Name)
     order["CustomerID"]= CID_Name[0]
     order["CustomerName"] = CID_Name[1]
-    order["email"] = CID_Name[1].lower().replace(' ','.') + "@gmail.com"
+    order["Email"] = CID_Name[1].lower().replace(' ','.') + "@gmail.com"
     order["Address"] = fake.address().replace('\n',' ')
     order["PhoneNumber"] = fake.phone_number()[0:10]
     order["InvoiceDate"] = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
