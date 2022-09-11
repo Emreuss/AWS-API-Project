@@ -1,0 +1,13 @@
+{
+  "jsonpaths": [
+      "$.CustomerID",
+      "$.CustomerName",
+      "$.Address",
+      "$.PhoneNumber",
+      "$.InvoiceDate",
+      "$.StockCode",
+      "$.Description",
+      "$.UnitPrice",
+      "$.Quantity"
+    ]
+}

@@ -1,0 +1,16 @@
+SELECT * FROM information_schema.tables WHERE table_schema = 'public'
+
+SELECT * FROM users LIMIT 10;
+
+SELECT count(*) FROM users;
+
+CREATE TABLE myusers (
+user_id INT PRIMARY KEY,
+user_first_name VARCHAR(30),
+user_last_name VARCHAR(30)
+);
+
+SELECT * FROM myusers;
+
+INSERT INTO myusers(user_id, user_first_name, user last name )
+VALUES (1, 'Scott', Tiger")
