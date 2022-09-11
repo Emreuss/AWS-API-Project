@@ -6,7 +6,7 @@ import time
 import json
 
 
-URL = "https://dt2lr5gew5.execute-api.eu-central-1.amazonaws.com/O/orders"
+#URL = "https://dt2lr5gew5.execute-api.eu-central-1.amazonaws.com/O/orders"
 
 headers={
     'Content-type':'application/json', 
@@ -40,8 +40,8 @@ df = pd.DataFrame(create_data(5000)).transpose()
 
 cols = ['CustomerID','Name']
 CustomerID_Name = df[cols].values.tolist()
-
-Quantity = data["Quantity"].values.tolist()
+Q_df = data[data["Quantity"]>0]
+Quantity = Q_df["Quantity"].values.tolist()
 
 
 import datetime; 
@@ -50,13 +50,15 @@ now = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 #while True:
 for i in range(1):
     order={}
+    anket={}
     n = rd.randint(1,10)
     time.sleep(rd.randint(1,15))
     CID_Name = rd.choice(CustomerID_Name)
     order["CustomerID"]=CID_Name[0]
     order["CustomerName"] = CID_Name[1]
-    order["Address"] = fake.address()
-    order["PhoneNumber"] = fake.phone_number()
+    order["email"] = CID_Name[1].lower().replace(' ','.') + "@gmail.com"
+    order["Address"] = fake.address().replace('\n',' ')
+    order["PhoneNumber"] = fake.phone_number()[0:10]
     order["InvoiceDate"] = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     for a in range(n):
         Stock_Desc_Unit = rd.choice(Stock_Desc_Unit_lst)
@@ -65,6 +67,8 @@ for i in range(1):
         order["UnitPrice"] = Stock_Desc_Unit[2]
         order["Quantity"]  = rd.choice(Quantity)
         order_json = json.dumps(order)
-        response = requests.post(URL, json = order, headers=headers)
+        #response = requests.post(URL, json = order, headers=headers)
         print(order_json)
-        print(response)
+        #print(response)
+    
+    
